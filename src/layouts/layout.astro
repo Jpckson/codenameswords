@@ -1,0 +1,77 @@
+---
+import { Font } from 'astro:assets';
+
+import '../styles/global.css';
+
+const { title } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+const year = new Date().getFullYear();
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>{title}</title>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="/favicon-32.png"
+        />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/apple-touch-icon.png"
+        />
+        <meta name="description" content="Free Codenames Word packs for over 25+ topics, ranging from Animals to Greek Mythology." />
+        <meta
+            name="robots"
+            content="index,follow,max-image-preview:large,max-snippet:-1"
+        />
+        <meta name="yandex-verification" content="9198498fbac39802" />
+
+        <link rel="canonical" href={canonicalURL} />
+
+        <meta name="theme-color" content="#FFD43B" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content={title} />
+        <meta property="og:locale" content="en" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content="Free Codenames Word packs for over 25+ topics, ranging from Animals to Greek Mythology." />
+
+        <meta
+            property="og:image"
+            content={new URL("/banner.webp", Astro.site)}
+        />
+        <meta property="og:image:alt" content={title} />
+        <meta property="og:url" content={canonicalURL} />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+            name="twitter:image"
+            content={new URL("/banner.webp", Astro.site)}
+        />
+
+        <Font cssVariable="--Bungee" preload />
+        <Font cssVariable="--SpaceMono" />
+
+    </head>
+    <body>
+        <div class="background" aria-hidden="true"></div>
+
+        <div class="site">
+            <slot name="main"/>
+        </div>
+
+        <footer>
+            <span>
+                {year} Codenames Words - <a href="/sitemap.xml">Sitemap</a>
+            </span>
+        </footer>
+    </body>
+</html>

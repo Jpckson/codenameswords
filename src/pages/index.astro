@@ -1,0 +1,64 @@
+---
+import Base from '../layouts/layout.astro';
+
+import '../styles/home.css';
+
+import { getCollection } from 'astro:content';
+
+const lists = await getCollection('lists');
+
+---
+
+<Base title="Coodenames Words - Free Codenames Word Lists">
+    <div slot="main">
+        <main>
+            <header>
+                <h1>Codenames Words</h1>
+                <p>Free <strong>Codenames word lists</strong> — pick a deck and play.</p>
+            </header>
+        
+            <div class="searchbar">
+                <input id="search" type="search" placeholder="Search word lists..." autocomplete="off">
+                <button class="searchbar-random" type="button" id="randomBtn">
+                    <span class="searchbar-dice" aria-hidden="true">🎲</span>
+                    <span>Random</span>
+                </button>
+            </div>
+        
+                <div class="count">
+                    <span id="resultCount">{`${lists.length} lists`}</span>
+                </div>
+                <ul class="grid" id="grid">
+                    {
+                        lists.map((list, i) => (
+                            <li class="card" data-name={list.data.name.toLowerCase()}>
+                                <a href={`/${list.data.slug}`} class="card-link">
+                                    <div class="card-top">
+                                        <h2 class="card-name">{list.data.name}</h2>
+                                        <span class="card-lang">EN</span>
+                                    </div>
+                                    <div class="card-tags">
+                                        <span class={`tag tag-${list.data.difficulty}`}>{list.data.difficulty}</span>
+                                        <span class="tag tag-count">{`${list.data.words.length} words`}</span>
+                                    </div>
+                                    <ol class="card-preview">
+                                        {
+                                            list.data.words.slice(0, 5).map((word) => (
+                                                <li>{word}</li>
+                                            ))
+                                        }
+                                    </ol>
+                                    <span class="card-cta">View Deck →</span>
+                                </a>
+                            </li>
+                        ))
+                    }
+                </ul>
+                <p class="empty" id="noResults" hidden>No lists match your search.</p>
+        </main>
+    </div>
+</Base>
+
+<script>
+    import '../scripts/home.js';
+</script>

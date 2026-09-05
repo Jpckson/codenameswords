@@ -1,0 +1,57 @@
+---
+import Base from '../layouts/layout.astro';
+
+import '../styles/board.css';
+import '../styles/list.css';
+
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+    const lists = await getCollection('lists');
+    return lists.map(list => ({
+        params: { list: list.id },
+        props: { list },
+    }));
+}
+
+const { list } = Astro.props;
+
+const words = list.data.words.sort();
+---
+<Base title=`${list.data.name} - Codenames Words`>
+    <div slot="main">
+        <main>
+            <header>
+                <a class="back" href="/">← all decks</a>
+                <h1 class="title">
+                    <span class="title-above">word deck</span>
+                    { list.data.name }
+                </h1>
+                <div class="meta">
+                    <span class="chip">{list.data.difficulty}</span>
+                    <span class="chip">{`${list.data.words.length} Words`}</span>
+                </div>
+            </header>
+        
+            <section class="controls">
+                <button id="copyBtn" class="btn" type="button" data-words={list.data.words}>
+                    <span class="btn-label">Copy all words</span>
+                </button>
+                <p class="hint">one word per line, ready to paste</p>
+            </section>
+
+            <ol class="words" id="words">
+                {
+                    list.data.words.map((word) => (
+                        <li class="word">
+                            <span class="word-num"></span>
+                            <span class="word-text">{word}</span>
+                        </li>
+                    ))
+                }
+            </ol>
+        </main>
+    </div>
+</Base>
+
+<script src="../scripts/copy.js"></script>

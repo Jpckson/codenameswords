@@ -1,0 +1,132 @@
+:root {
+    --medium: #3b82f6;
+    --dark: #1d4ed8;
+    --light: #93c5fd;
+
+    --black: #000000;
+    --black-40: rgba(0, 0, 0, .40);
+
+    --yellow: #ffd43b;
+    --red: #ff6b6b;
+    --green: #34d399;
+    --purple: #a78bfa;
+
+    --white: #ffffff;
+
+    --border: 3px solid var(--black);
+    --shadow: 6px 6px 0 var(--black);
+    --shadow-sm: 4px 4px 0 var(--black);
+    --shadow-press: 2px 2px 0 var(--black);
+
+    --radius: 18px;
+    --radius-sm: 12px;
+
+    --maxw: 1080px;
+
+    --ease-bounce: cubic-bezier(.34, 1.56, .64, 1);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--SpaceMono), ui-monospace, monospace;
+    color: var(--black);
+    background: linear-gradient(180deg, #cfe0f5, #aac5e8);
+    background-attachment: fixed;
+    line-height: 1.55;
+    position: relative;
+}
+
+a {
+    color: var(--dark);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+}
+
+a:hover {
+    color: var(--black);
+}
+
+h1,
+h2 {
+    font-family: var(--Bungee), var(--SpaceMono), monospace;
+    font-weight: 400;
+    line-height: 1;
+}
+
+strong {
+    font-weight: 700;
+    color: var(--dark);
+}
+
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image:
+        radial-gradient(var(--dark) 1.6px, transparent 1.6px);
+    background-size: 26px 26px;
+    background-position: -13px -13px;
+    opacity: .22;
+    -webkit-mask-image: radial-gradient(ellipse 130% 100% at 50% 0%, #000 45%, transparent 92%);
+    mask-image: radial-gradient(ellipse 130% 100% at 50% 0%, #000 45%, transparent 92%);
+}
+
+.site {
+    flex: 1 0 auto;
+    width: 100%;
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 32px 24px 64px;
+}
+
+footer {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 28px 24px 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: baseline;
+    gap: 6px 14px;
+    border-top: 3px dashed var(--black-40);
+}
+
+footer span {
+    font-family: var(--Bungee), monospace;
+    font-size: 14px;
+}
+
+footer a {
+    color: inherit;
+    text-decoration: none;
+}
+
+header {
+    text-align: center;
+    padding: 64px 0px;
+}
+
+header h1 {
+    font-size: clamp(40px, 9vw, 86px);
+    color: var(--black);
+    margin: 0;
+    letter-spacing: -1px;
+    text-shadow: 4px 4px 0 var(--medium), 8px 8px 0 var(--light);
+}
+
+header p {
+    max-width: 620px;
+    margin: 22px auto 0;
+    font-size: clamp(14px, 2.2vw, 17px);
+    color: var(--black);
+}
