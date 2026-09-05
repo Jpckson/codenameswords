@@ -29,4 +29,4 @@ Length defaults to 25.
 
 ## 
 
-This project was my first using [Astro](https://github.com/withastro/astro).
+[![Built with Astro](https://astro.badg.es/v2/built-with-astro/medium.svg)](https://astro.build)
