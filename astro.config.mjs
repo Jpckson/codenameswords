@@ -2,8 +2,6 @@ import { defineConfig, fontProviders } from 'astro/config';
 
 import sitemap from '@astrojs/sitemap';
 
-import node from '@astrojs/node';
-
 export default defineConfig({
     site: 'https://codenameswords.xyz',
     base: '/',
@@ -46,7 +44,4 @@ export default defineConfig({
     ],
 
     server: { port: 4221 },
-    adapter: node({
-        mode: 'standalone'
-    })
 });

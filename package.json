@@ -12,8 +12,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/node": "^11.1.5",
-    "@astrojs/sitemap": "^3.7.3"
+    "@astrojs/sitemap": "^3.7.3",
+    "astro": "^7.3.5"
   },
   "allowScripts": {
     "esbuild": true
